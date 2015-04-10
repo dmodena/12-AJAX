@@ -1,14 +1,11 @@
-var March_to_may, amount_billable, months, sub_grid;
+var message;
 
-amount_billable = function(hours, rate, tax_rate) {
-  if (tax_rate == null) {
-    tax_rate = 1.05;
-  }
-  return hours * rate * tax_rate;
+$(function() {
+  return $('#test').on("click", function(event) {
+    return message("Hello");
+  });
+});
+
+message = function(message) {
+  return alert(message);
 };
-
-sub_grid = [5, 3, 0, 6, 0, 0, 0, 9, 8];
-
-months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-March_to_may = [2, 3, 4];
