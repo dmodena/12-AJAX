@@ -6,6 +6,14 @@ guard 'sass', :input => 'sass', :output => 'public/css', :all_on_start => true d
   watch %r{^sass/.+(\.s[ac]ss)$}
 end
 
-guard 'coffeescript', :input => 'coffee', :output => 'public/js', :all_on_start => true do
-  watch %r{^coffee/.+(\.coffee)$}
+coffeescript_options = {
+  input: 'coffee',
+  output: 'public/js',
+  bare: true,
+  all_on_start: true,
+  patterns: [%r{^coffee/(.+\.(?:coffee|coffee\.md|litcoffee))$}]
+}
+
+guard 'coffeescript', coffeescript_options do
+  coffeescript_options[:patterns].each { |pattern| watch(pattern) }
 end
