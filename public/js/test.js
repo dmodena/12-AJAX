@@ -1,11 +1,31 @@
-var message;
+var bcFile, city, loadContent, mbFile;
 
 $(function() {
-  return $('#test').on("click", function(event) {
-    return message("Hello");
+  $('#bc').on('click', function(event) {
+    loadContent("BCweather.xml");
+    return false;
+  });
+  return $('#mb').on('click', function(event) {
+    loadContent("ManitobaWeather.xml");
+    return false;
   });
 });
 
-message = function(message) {
-  return alert(message);
+loadContent = function(filename) {
+  return $('#container').load(filename);
+};
+
+bcFile = $.ajax({
+  url: 'BCweather.xml',
+  success: city
+});
+
+mbFile = $.ajax({
+  url: 'ManitobaWeather.xml',
+  success: city
+});
+
+city = function() {
+  var $city;
+  return $city = $('city', data);
 };

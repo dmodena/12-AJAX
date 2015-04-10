@@ -6,4 +6,11 @@
     %script{:type => 'text/javascript', :src => 'js/test.js'}
     %title Weather Forecast
   %body
-    %a#test{:href => '#'} Test
+    %label{:for => 'province'} Province:
+    #provinceContainer
+      %select#province
+        %option#none{:value => "none", :selected => true} Please Select
+        %option#bc{:value => "bc"} British Columbia
+        %option#mb{:value => "mb"} Manitoba
+    #cityContainer
+    #container
