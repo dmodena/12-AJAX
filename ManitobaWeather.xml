@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<weather>
+	<city>
+		<name>Winnipeg</name>
+		<temperature>9</temperature>
+		<wind>W 15 km/h</wind>
+		<humidity>70%</humidity>
+		<pressure>102.0 kPa</pressure>
+		<visibility>6 km</visibility>
+	</city>
+	<city>
+		<name>Brandon</name>
+		<temperature>11</temperature>
+		<wind>N 5 km/h</wind>
+		<humidity>60%</humidity>
+		<pressure>102.7 kPa</pressure>
+		<visibility>4 km</visibility>
+	</city>
+	<city>
+		<name>Portage la Prairie</name>
+		<temperature>11</temperature>
+		<wind>NW 5 km/h</wind>
+		<humidity>60%</humidity>
+		<pressure>102.9 kPa</pressure>
+		<visibility>4 km</visibility>
+	</city>
+	<city>
+		<name>The Pas</name>
+		<temperature>7</temperature>
+		<wind>N 5 km/h</wind>
+		<humidity>60%</humidity>
+		<pressure>103.2 kPa</pressure>
+		<visibility>5 km</visibility>
+	</city>
+</weather>

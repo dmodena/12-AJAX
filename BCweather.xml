@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<weather>
+	<city>
+		<name>Vancouver</name>
+		<temperature>17</temperature>
+		<wind>W 11 km/h</wind>
+		<humidity>80%</humidity>
+		<pressure>101.0 kPa</pressure>
+		<visibility>6 km</visibility>
+	</city>
+	<city>
+		<name>Victoria</name>
+		<temperature>15</temperature>
+		<wind>NW 14 km/h</wind>
+		<humidity>75%</humidity>
+		<pressure>101.7 kPa</pressure>
+		<visibility>4 km</visibility>
+	</city>
+	<city>
+		<name>Nanaimo</name>
+		<temperature>16</temperature>
+		<wind>NW 13 km/h</wind>
+		<humidity>70%</humidity>
+		<pressure>101.8 kPa</pressure>
+		<visibility>4 km</visibility>
+	</city>
+	<city>
+		<name>Kelowna</name>
+		<temperature>22</temperature>
+		<wind>N 5 km/h</wind>
+		<humidity>40%</humidity>
+		<pressure>103.2 kPa</pressure>
+		<visibility>5 km</visibility>
+	</city>
+</weather>
