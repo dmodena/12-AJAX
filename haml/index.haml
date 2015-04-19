@@ -2,8 +2,9 @@
 %html
   %head
     %meta{:charset => 'UTF-8'}
-    %script{:type => 'text/javascript', :src => 'js/jquery-2.1.3.min.js'}
-    %script{:type => 'text/javascript', :src => 'js/test.js'}
+    %script{:type => 'text/javascript', :src => 'js/weather.js'}
+    %script{:type => 'text/javascript', :src => 'js/makeList.js'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => 'css/style.css'}
     %title Weather Forecast
   %body
     %label{:for => 'province'} Province:
@@ -12,5 +13,7 @@
         %option#none{:value => "none", :selected => true} Please Select
         %option#bc{:value => "bc"} British Columbia
         %option#mb{:value => "mb"} Manitoba
+    %label.disabled{:for => 'city'} City:
     #cityContainer
+      %select#city{:disabled => true}
     #container
