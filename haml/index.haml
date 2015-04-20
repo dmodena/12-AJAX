@@ -7,13 +7,17 @@
     %link{:rel => 'stylesheet', :type => 'text/css', :href => 'css/style.css'}
     %title Weather Forecast
   %body
-    %label#provinceLabel{:for => 'province'} Province:
-    #provinceContainer
-      %select#province
-        %option#none{:value => "none", :selected => true} Please Select
-        %option#bc{:value => "bc"} British Columbia
-        %option#mb{:value => "mb"} Manitoba
-    %label#cityLabel.disabled{:for => 'city'} City:
-    #cityContainer
-      %select#city{:disabled => true}
-    #container
+    #wrap
+      #main
+        %label#provinceLabel{:for => 'province'} Province:
+        #provinceContainer
+          %select#province
+            %option#none{:value => "none", :selected => true} Please Select
+            %option#bc{:value => "bc"} British Columbia
+            %option#mb{:value => "mb"} Manitoba
+        %label#cityLabel.disabled{:for => 'city'} City:
+        #cityContainer
+          %select#city{:disabled => true}
+        #container
+    #footer
+      %span.bold Status:

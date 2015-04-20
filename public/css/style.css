@@ -1,5 +1,29 @@
+* {
+  margin: 0px;
+  padding: 0px; }
+
+html, body {
+  height: 100%; }
+
+#wrap {
+  min-height: 100%; }
+
+#main {
+  overflow: auto;
+  padding-bottom: 20px; }
+
+#footer {
+  background-color: #DDD;
+  position: relative;
+  margin-top: -20px;
+  height: 20px;
+  clear: both; }
+
 .hide {
   display: none; }
 
 .disabled {
   color: #CCC; }
+
+.bold {
+  font-weight: bold; }

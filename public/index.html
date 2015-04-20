@@ -8,18 +8,25 @@
     <title>Weather Forecast</title>
   </head>
   <body>
-    <label for='province' id='provinceLabel'>Province:</label>
-    <div id='provinceContainer'>
-      <select id='province'>
-        <option id='none' selected value='none'>Please Select</option>
-        <option id='bc' value='bc'>British Columbia</option>
-        <option id='mb' value='mb'>Manitoba</option>
-      </select>
+    <div id='wrap'>
+      <div id='main'>
+        <label for='province' id='provinceLabel'>Province:</label>
+        <div id='provinceContainer'>
+          <select id='province'>
+            <option id='none' selected value='none'>Please Select</option>
+            <option id='bc' value='bc'>British Columbia</option>
+            <option id='mb' value='mb'>Manitoba</option>
+          </select>
+        </div>
+        <label class='disabled' for='city' id='cityLabel'>City:</label>
+        <div id='cityContainer'>
+          <select disabled id='city'></select>
+        </div>
+        <div id='container'></div>
+      </div>
     </div>
-    <label class='disabled' for='city' id='cityLabel'>City:</label>
-    <div id='cityContainer'>
-      <select disabled id='city'></select>
+    <div id='footer'>
+      <span class='bold'>Status:</span>
     </div>
-    <div id='container'></div>
   </body>
 </html>

@@ -45,7 +45,7 @@ requestURL = (url) ->
 # Starts Ajax object
 startAjax = ->
   if window.XMLHttpRequest
-    ajax = new XMLHttpRequest
+    ajax = new XMLHttpRequest()
   else if window.ActiveXObject
     try
       ajax = new ActiveXObject "Msxml2.XMLHTTP"
