@@ -1,4 +1,4 @@
-var bcFile, mbFile, onLoad, requestURL, selectChange, startAjax;
+var bcFile, cleanChildren, mbFile, onLoad, requestURL, selectChange, startAjax;
 
 bcFile = "BCweather.xml";
 
@@ -11,11 +11,12 @@ onLoad = function() {
 };
 
 selectChange = function() {
-  var bc, city, cityLabel, mb, none, province;
+  var bc, city, cityLabel, cnone, mb, pnone, province;
   province = document.getElementById("province");
   city = document.getElementById("city");
   cityLabel = document.getElementById("cityLabel");
-  none = document.getElementById("none");
+  pnone = document.getElementById("pnone");
+  cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
   if (province.value === "none") {
@@ -64,6 +65,12 @@ startAjax = function() {
     }
   }
   return ajax;
+};
+
+cleanChildren = function(container) {
+  while (container.hasChildNodes()) {
+    container.removeChild(container.lastChild);
+  }
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);

@@ -13,7 +13,8 @@ selectChange = ->
   province = document.getElementById "province"
   city = document.getElementById "city"
   cityLabel = document.getElementById "cityLabel"
-  none = document.getElementById "none"
+  pnone = document.getElementById "pnone"
+  cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
 
@@ -58,6 +59,12 @@ startAjax = ->
     catch e
       ajax = new ActiveXObject "Microsoft.XMLHTTP"
   ajax
+
+# Clean children elements
+cleanChildren = (container) ->
+  while container.hasChildNodes()
+    container.removeChild container.lastChild
+  return
 
 # Adding Event Listener when DOM is loaded
 document.addEventListener "DOMContentLoaded", onLoad, false

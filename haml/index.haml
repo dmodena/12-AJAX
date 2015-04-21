@@ -12,12 +12,13 @@
         %label#provinceLabel{:for => 'province'} Province:
         #provinceContainer
           %select#province
-            %option#none{:value => "none", :selected => true} Please Select
+            %option#pnone{:value => "none", :selected => true} Please Select
             %option#bc{:value => "bc"} British Columbia
             %option#mb{:value => "mb"} Manitoba
         %label#cityLabel.disabled{:for => 'city'} City:
         #cityContainer
           %select#city{:disabled => true}
+            %option#cnone{:value => "none", :selected => true} Please Select
         #container
     #footer
       %span.bold
