@@ -6,7 +6,7 @@ mbFile = "ManitobaWeather.xml"
 onLoad = ->
   province = document.getElementById "province"
   province.addEventListener "change", selectChange
-  null
+  return
 
 # Checks for selected province input
 selectChange = ->
@@ -28,19 +28,25 @@ selectChange = ->
     cityLabel.removeAttribute
     city.removeAttribute "disabled"
     requestURL mbFile
-  null
+  return
 
 # Return content based on option
 requestURL = (url) ->
+  status = document.getElementById "status"
   ajax = startAjax()
   if ajax isnt null
     ajax.onreadystatechange = ->
       if (ajax.readyState is 4 and ajax.status is 200)
         createList ajax
-      null
+        return
+      else
+        status.innerHTML = "Loading content."
+        return
     ajax.open "GET", url
-    ajax.send
-  null
+    ajax.send()
+  else
+    status.innerHTML = "Failed getting content."
+  return
 
 # Starts Ajax object
 startAjax = ->

@@ -8,7 +8,6 @@ onLoad = function() {
   var province;
   province = document.getElementById("province");
   province.addEventListener("change", selectChange);
-  return null;
 };
 
 selectChange = function() {
@@ -31,23 +30,25 @@ selectChange = function() {
     city.removeAttribute("disabled");
     requestURL(mbFile);
   }
-  return null;
 };
 
 requestURL = function(url) {
-  var ajax;
+  var ajax, status;
+  status = document.getElementById("status");
   ajax = startAjax();
   if (ajax !== null) {
     ajax.onreadystatechange = function() {
       if (ajax.readyState === 4 && ajax.status === 200) {
         createList(ajax);
+      } else {
+        status.innerHTML = "Loading content.";
       }
-      return null;
     };
     ajax.open("GET", url);
-    ajax.send;
+    ajax.send();
+  } else {
+    status.innerHTML = "Failed getting content.";
   }
-  return null;
 };
 
 startAjax = function() {
