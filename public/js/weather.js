@@ -1,4 +1,4 @@
-var bcFile, cityStandard, cleanChildren, mbFile, onLoad, provinceChange, requestURL, startAjax;
+var bcFile, cityChange, cityStandard, cleanChildren, displayCity, mbFile, onLoad, provinceChange, requestURL, startAjax;
 
 bcFile = "BCweather.xml";
 
@@ -9,6 +9,7 @@ onLoad = function() {
   province = document.getElementById("province");
   city = document.getElementById("city");
   province.addEventListener("change", provinceChange);
+  city.addEventListener("change", cityChange);
 };
 
 provinceChange = function() {
@@ -21,7 +22,7 @@ provinceChange = function() {
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
   status = document.getElementById("status");
-  if (province.value === "pnone") {
+  if (province.value === "none") {
     cleanChildren(city);
     cityStandard(city);
     cityLabel.setAttribute("class", "disabled");
@@ -29,15 +30,30 @@ provinceChange = function() {
   } else if (province.value === "bc") {
     cityLabel.removeAttribute("class");
     city.removeAttribute("disabled");
-    requestURL(bcFile);
+    requestURL(bcFile, false);
   } else if (province.value === "mb") {
     cityLabel.removeAttribute;
     city.removeAttribute("disabled");
-    requestURL(mbFile);
+    requestURL(mbFile, false);
   }
 };
 
-requestURL = function(url) {
+cityChange = function() {
+  var bc, city, cityLabel, cnone, mb, pnone, province, status;
+  province = document.getElementById("province");
+  city = document.getElementById("city");
+  cityLabel = document.getElementById("cityLabel");
+  pnone = document.getElementById("pnone");
+  cnone = document.getElementById("cnone");
+  bc = document.getElementById("bc");
+  mb = document.getElementById("mb");
+  status = document.getElementById("status");
+  if (city.value !== "none") {
+    requestURL(bcFile, true);
+  }
+};
+
+requestURL = function(url, c) {
   var ajax, status;
   status = document.getElementById("status");
   ajax = startAjax();
@@ -45,7 +61,11 @@ requestURL = function(url) {
     ajax.onreadystatechange = function() {
       if (ajax.readyState === 4 && ajax.status === 200) {
         status.innerHTML = "OK";
-        createList(ajax);
+        if (c !== true) {
+          createList(ajax);
+        } else {
+          displayCity(ajax);
+        }
       } else {
         status.innerHTML = "Loading";
       }
@@ -55,6 +75,10 @@ requestURL = function(url) {
   } else {
     status.innerHTML = "Failed";
   }
+};
+
+displayCity = function(ajax) {
+  return alert("Hi");
 };
 
 startAjax = function() {
@@ -83,6 +107,7 @@ cityStandard = function(city) {
   noOptionText = document.createTextNode("Please Select");
   noOption = document.createElement("option");
   noOption.setAttribute("id", "cnone");
+  noOption.setAttribute("value", "none");
   noOption.appendChild(noOptionText);
   return city.appendChild(noOption);
 };
