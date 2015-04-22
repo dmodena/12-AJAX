@@ -11,28 +11,33 @@
   <body>
     <div id='wrap'>
       <div id='main'>
-        <label for='province' id='provinceLabel'>Province:</label>
-        <div id='provinceContainer'>
-          <select id='province'>
-            <option id='pnone' selected value='none'>Please Select</option>
-            <option id='bc' value='bc'>British Columbia</option>
-            <option id='mb' value='mb'>Manitoba</option>
-          </select>
+        <div id='top'>
+          <h3>Weather Forecast</h3>
+          <label for='province' id='provinceLabel'>Province:</label>
+          <div id='provinceContainer'>
+            <select id='province'>
+              <option id='pnone' selected value='none'>Please Select</option>
+              <option id='bc' value='bc'>British Columbia</option>
+              <option id='mb' value='mb'>Manitoba</option>
+            </select>
+          </div>
+          <label class='disabled' for='city' id='cityLabel'>City:</label>
+          <div id='cityContainer'>
+            <select disabled id='city'>
+              <option id='cnone' selected value='none'>Please Select</option>
+            </select>
+          </div>
+          <div id='container'></div>
         </div>
-        <label class='disabled' for='city' id='cityLabel'>City:</label>
-        <div id='cityContainer'>
-          <select disabled id='city'>
-            <option id='cnone' selected value='none'>Please Select</option>
-          </select>
-        </div>
-        <div id='container'></div>
       </div>
     </div>
     <div id='footer'>
-      <span class='bold'>
-        Status:
-      </span>
-      <span id='status'>Idle</span>
+      <div id='bottom'>
+        <span class='bold'>
+          Status:
+        </span>
+        <span id='status'>Idle</span>
+      </div>
     </div>
   </body>
 </html>
