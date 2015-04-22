@@ -5,6 +5,7 @@ displayCity = function(ajax) {
   cityOutput = document.getElementById("container");
   citySelect = document.getElementById("city");
   chosenCity = citySelect.value;
+  cleanChildren(cityOutput);
   xmlDoc = ajax.responseXML;
   cities = xmlDoc.getElementsByTagName("city");
   for (i = 0, len = cities.length; i < len; i++) {

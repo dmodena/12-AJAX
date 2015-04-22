@@ -4,6 +4,9 @@ displayCity = (ajax) ->
   citySelect = document.getElementById "city"
   chosenCity = citySelect.value
 
+  # Cleaning city output
+  cleanChildren cityOutput
+
   # Getting document as XML
   xmlDoc = ajax.responseXML
 

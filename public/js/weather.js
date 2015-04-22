@@ -13,7 +13,7 @@ onLoad = function() {
 };
 
 provinceChange = function() {
-  var bc, city, cityLabel, cnone, mb, pnone, province;
+  var bc, city, cityLabel, cityOutput, cnone, mb, pnone, province;
   province = document.getElementById("province");
   city = document.getElementById("city");
   cityLabel = document.getElementById("cityLabel");
@@ -21,6 +21,8 @@ provinceChange = function() {
   cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
+  cityOutput = document.getElementById("container");
+  cleanChildren(cityOutput);
   if (province.value === "none") {
     cleanChildren(city);
     cityStandard(city);
@@ -38,19 +40,22 @@ provinceChange = function() {
 };
 
 cityChange = function() {
-  var bc, city, cnone, mb, pnone, province;
+  var bc, city, cityOutput, cnone, mb, pnone, province;
   province = document.getElementById("province");
   city = document.getElementById("city");
   pnone = document.getElementById("pnone");
   cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
+  cityOutput = document.getElementById("container");
   if (city.value !== "none") {
     if (province.value === "bc") {
       requestURL(bcFile, true);
     } else if (province.value === "mb") {
       requestURL(mbFile, true);
     }
+  } else {
+    cleanChildren(cityOutput);
   }
 };
 

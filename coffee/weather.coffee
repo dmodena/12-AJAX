@@ -21,6 +21,11 @@ provinceChange = ->
   cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
+  cityOutput = document.getElementById "container"
+
+  # Cleaning output on each change
+  cleanChildren cityOutput
+  
   if province.value is "none"
     cleanChildren city
     cityStandard city
@@ -44,11 +49,14 @@ cityChange = ->
   cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
+  cityOutput = document.getElementById "container"
   unless city.value is "none"
     if province.value is "bc"
       requestURL bcFile, true
     else if province.value is "mb"
       requestURL mbFile, true
+  else
+    cleanChildren cityOutput
   return
 
 # Return content based on option
