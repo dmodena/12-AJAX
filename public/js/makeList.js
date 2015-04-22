@@ -1,14 +1,10 @@
 var createList;
 
 createList = function(ajax) {
-  var cities, city, cityOutput, humidities, humidity, i, len, name, names, noOption, noOptionText, optionText, pressure, pressures, temperature, temperatures, thisOption, visibilities, visibility, wind, winds, xmlDoc;
+  var cities, city, cityOutput, humidities, humidity, i, len, name, names, optionText, pressure, pressures, temperature, temperatures, thisOption, visibilities, visibility, wind, winds, xmlDoc;
   cityOutput = document.getElementById("city");
   cleanChildren(cityOutput);
-  noOptionText = document.createTextNode("Please Select");
-  noOption = document.createElement("option");
-  noOption.setAttribute("id", "cnone");
-  noOption.appendChild(noOptionText);
-  cityOutput.appendChild(noOption);
+  cityStandard(cityOutput);
   xmlDoc = ajax.responseXML;
   cities = xmlDoc.getElementsByTagName("city");
   for (i = 0, len = cities.length; i < len; i++) {

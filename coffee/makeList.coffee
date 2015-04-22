@@ -5,12 +5,8 @@ createList = (ajax) ->
   # Cleaning city output
   cleanChildren cityOutput
 
-  # Adding "Please Select" option
-  noOptionText = document.createTextNode "Please Select"
-  noOption = document.createElement "option"
-  noOption.setAttribute "id", "cnone"
-  noOption.appendChild noOptionText
-  cityOutput.appendChild noOption
+  # Inserting standard option
+  cityStandard cityOutput
 
   # Getting document as XML
   xmlDoc = ajax.responseXML

@@ -2,14 +2,18 @@
 bcFile = "BCweather.xml"
 mbFile = "ManitobaWeather.xml"
 
+
+
 # Function to be fired when document is loaded
 onLoad = ->
   province = document.getElementById "province"
-  province.addEventListener "change", selectChange
+  city = document.getElementById "city"
+  province.addEventListener "change", provinceChange
+  # city.addEventListener "change", cityChange
   return
 
 # Checks for selected province input
-selectChange = ->
+provinceChange = ->
   province = document.getElementById "province"
   city = document.getElementById "city"
   cityLabel = document.getElementById "cityLabel"
@@ -17,8 +21,10 @@ selectChange = ->
   cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
-
-  if province.value is "none"
+  status = document.getElementById "status"
+  if province.value is "pnone"
+    cleanChildren city
+    cityStandard city
     cityLabel.setAttribute "class", "disabled"
     city.setAttribute "disabled", "disabled"
   else if province.value is "bc"
@@ -31,6 +37,26 @@ selectChange = ->
     requestURL mbFile
   return
 
+# # Checks for selected city input
+# provinceChange = ->
+#   # province = document.getElementById "province"
+#   # city = document.getElementById "city"
+#   # cityLabel = document.getElementById "cityLabel"
+#   # pnone = document.getElementById "pnone"
+#   # cnone = document.getElementById "cnone"
+#   # bc = document.getElementById "bc"
+#   # mb = document.getElementById "mb"
+#   # status = document.getElementById "status"
+#   if city.value is "cnone"
+#     # cleanChildren city
+#     # cityStandard city
+#     # cityLabel.setAttribute "class", "disabled"
+#     # city.setAttribute "disabled", "disabled"
+#     return
+#   else
+#
+#   return
+
 # Return content based on option
 requestURL = (url) ->
   status = document.getElementById "status"
@@ -38,15 +64,16 @@ requestURL = (url) ->
   if ajax isnt null
     ajax.onreadystatechange = ->
       if (ajax.readyState is 4 and ajax.status is 200)
+        status.innerHTML = "OK"
         createList ajax
         return
       else
-        status.innerHTML = "Loading content."
+        status.innerHTML = "Loading"
         return
     ajax.open "GET", url
     ajax.send()
   else
-    status.innerHTML = "Failed getting content."
+    status.innerHTML = "Failed"
   return
 
 # Starts Ajax object
@@ -65,6 +92,14 @@ cleanChildren = (container) ->
   while container.hasChildNodes()
     container.removeChild container.lastChild
   return
+
+# Adds a standard option on city element
+cityStandard = (city) ->
+  noOptionText = document.createTextNode "Please Select"
+  noOption = document.createElement "option"
+  noOption.setAttribute "id", "cnone"
+  noOption.appendChild noOptionText
+  city.appendChild noOption
 
 # Adding Event Listener when DOM is loaded
 document.addEventListener "DOMContentLoaded", onLoad, false

@@ -1,17 +1,18 @@
-var bcFile, cleanChildren, mbFile, onLoad, requestURL, selectChange, startAjax;
+var bcFile, cityStandard, cleanChildren, mbFile, onLoad, provinceChange, requestURL, startAjax;
 
 bcFile = "BCweather.xml";
 
 mbFile = "ManitobaWeather.xml";
 
 onLoad = function() {
-  var province;
+  var city, province;
   province = document.getElementById("province");
-  province.addEventListener("change", selectChange);
+  city = document.getElementById("city");
+  province.addEventListener("change", provinceChange);
 };
 
-selectChange = function() {
-  var bc, city, cityLabel, cnone, mb, pnone, province;
+provinceChange = function() {
+  var bc, city, cityLabel, cnone, mb, pnone, province, status;
   province = document.getElementById("province");
   city = document.getElementById("city");
   cityLabel = document.getElementById("cityLabel");
@@ -19,7 +20,10 @@ selectChange = function() {
   cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
-  if (province.value === "none") {
+  status = document.getElementById("status");
+  if (province.value === "pnone") {
+    cleanChildren(city);
+    cityStandard(city);
     cityLabel.setAttribute("class", "disabled");
     city.setAttribute("disabled", "disabled");
   } else if (province.value === "bc") {
@@ -40,15 +44,16 @@ requestURL = function(url) {
   if (ajax !== null) {
     ajax.onreadystatechange = function() {
       if (ajax.readyState === 4 && ajax.status === 200) {
+        status.innerHTML = "OK";
         createList(ajax);
       } else {
-        status.innerHTML = "Loading content.";
+        status.innerHTML = "Loading";
       }
     };
     ajax.open("GET", url);
     ajax.send();
   } else {
-    status.innerHTML = "Failed getting content.";
+    status.innerHTML = "Failed";
   }
 };
 
@@ -71,6 +76,15 @@ cleanChildren = function(container) {
   while (container.hasChildNodes()) {
     container.removeChild(container.lastChild);
   }
+};
+
+cityStandard = function(city) {
+  var noOption, noOptionText;
+  noOptionText = document.createTextNode("Please Select");
+  noOption = document.createElement("option");
+  noOption.setAttribute("id", "cnone");
+  noOption.appendChild(noOptionText);
+  return city.appendChild(noOption);
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);
