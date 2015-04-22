@@ -2,8 +2,6 @@
 bcFile = "BCweather.xml"
 mbFile = "ManitobaWeather.xml"
 
-
-
 # Function to be fired when document is loaded
 onLoad = ->
   province = document.getElementById "province"
@@ -25,7 +23,7 @@ provinceChange = ->
 
   # Cleaning output on each change
   cleanChildren cityOutput
-  
+
   if province.value is "none"
     cleanChildren city
     cityStandard city
