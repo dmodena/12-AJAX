@@ -21,7 +21,6 @@ provinceChange = ->
   cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
-  status = document.getElementById "status"
   if province.value is "none"
     cleanChildren city
     cityStandard city
@@ -41,14 +40,15 @@ provinceChange = ->
 cityChange = ->
   province = document.getElementById "province"
   city = document.getElementById "city"
-  cityLabel = document.getElementById "cityLabel"
   pnone = document.getElementById "pnone"
   cnone = document.getElementById "cnone"
   bc = document.getElementById "bc"
   mb = document.getElementById "mb"
-  status = document.getElementById "status"
   unless city.value is "none"
-    requestURL bcFile, true
+    if province.value is "bc"
+      requestURL bcFile, true
+    else if province.value is "mb"
+      requestURL mbFile, true
   return
 
 # Return content based on option
@@ -72,9 +72,6 @@ requestURL = (url, c) ->
   else
     status.innerHTML = "Failed"
   return
-
-displayCity = (ajax) ->
-  alert "Hi"
 
 # Starts Ajax object
 startAjax = ->

@@ -1,4 +1,4 @@
-var bcFile, cityChange, cityStandard, cleanChildren, displayCity, mbFile, onLoad, provinceChange, requestURL, startAjax;
+var bcFile, cityChange, cityStandard, cleanChildren, mbFile, onLoad, provinceChange, requestURL, startAjax;
 
 bcFile = "BCweather.xml";
 
@@ -13,7 +13,7 @@ onLoad = function() {
 };
 
 provinceChange = function() {
-  var bc, city, cityLabel, cnone, mb, pnone, province, status;
+  var bc, city, cityLabel, cnone, mb, pnone, province;
   province = document.getElementById("province");
   city = document.getElementById("city");
   cityLabel = document.getElementById("cityLabel");
@@ -21,7 +21,6 @@ provinceChange = function() {
   cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
-  status = document.getElementById("status");
   if (province.value === "none") {
     cleanChildren(city);
     cityStandard(city);
@@ -39,17 +38,19 @@ provinceChange = function() {
 };
 
 cityChange = function() {
-  var bc, city, cityLabel, cnone, mb, pnone, province, status;
+  var bc, city, cnone, mb, pnone, province;
   province = document.getElementById("province");
   city = document.getElementById("city");
-  cityLabel = document.getElementById("cityLabel");
   pnone = document.getElementById("pnone");
   cnone = document.getElementById("cnone");
   bc = document.getElementById("bc");
   mb = document.getElementById("mb");
-  status = document.getElementById("status");
   if (city.value !== "none") {
-    requestURL(bcFile, true);
+    if (province.value === "bc") {
+      requestURL(bcFile, true);
+    } else if (province.value === "mb") {
+      requestURL(mbFile, true);
+    }
   }
 };
 
@@ -75,10 +76,6 @@ requestURL = function(url, c) {
   } else {
     status.innerHTML = "Failed";
   }
-};
-
-displayCity = function(ajax) {
-  return alert("Hi");
 };
 
 startAjax = function() {

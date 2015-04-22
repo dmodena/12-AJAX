@@ -1,0 +1,2 @@
+displayCity = (ajax) ->
+  alert "Hi"
