@@ -6,7 +6,7 @@ For this assignment I decided to use [CoffeScript](http://coffescript.org) inste
 
 Dependencies
 ------------
-The gems used for this assignment are listed in the **Gemfile**. Only three main 4 main gems were used (the other are only dependencies of the main gems). They are:
+The gems used for this assignment are listed in the **Gemfile**. Only 4 main gems were used (the other are only dependencies of the main gems). They are:
 - [Haml](http://haml.info) - Used for markup generation;
 - [Sass](http://sass-lang.com) - Used for CSS generation;
 - [CoffeeScript](http://coffescript.com) - Used for JavaScript generation;
